@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>举牌表情生成</title>
+	<style type="text/css">
+		*{
+			padding: 0px;
+			margin: 0px;
+			box-sizing: border-box;
+		}
+		#head{
+			height: 100px;
+			line-height: 100px;
+			width: 100%;
+			text-align: center;
+			margin: 30px auto;
+		}
+		#in{
+			line-height: 40px;
+			margin: auto 10px;
+		}
+		#dian{
+			height: 40px;
+			text-align: center;
+			margin: auto 10px;
+		}
+		#foot{
+			width: 400px;
+			height: 600px;
+			margin: 100px auto;
+		}
+		.im{
+			display: inline-block;
+			position: relative;
+		}
+		.font{
+			position: absolute;
+			background: #f9dd22;
+			top: 5px;
+			left: 15px;
+			font-size: 24px;
+			transform: rotate(28deg);
+			line-height: 1;
+		}
+	</style>
+</head>
+<body>
+<div id="head">
+	<input type="text" name="shuru" id="in">
+	<button id="dian" onclick="product()">生成表情</button>
+</div>
+<div id="foot">
+	
+</div>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script type="text/javascript">
+	function product(){
+		var zhi=$('#in').val();
+		var fen=zhi.split('');
+		var str='';
+		var img=['1.png','2.png','3.png','4.png'];
+		for (var i = 0; i <fen.length; i++) {
+			var str1="<div class='im'><img src='"+img[Math.floor(Math.random()*4)]+"'><div class='font'>"+fen[i]+"</div></div>"
+			str+=str1;
+		}
+		$('#foot').html(str);
+		var ims=$('.im');
+		ims.each(function(index){
+			var _top=15*(index%6);
+			$(this).css({top:_top});
+		})
+	}
+</script>
+</body>
+</html>
